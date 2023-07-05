@@ -2,6 +2,7 @@ package com.example.chap2p;
 
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -13,5 +14,12 @@ public class VideoService {
 
     List<Video> getVideos(){
         return this.videos;
+    }
+
+    public Video create(Video newVideo) {
+        List<Video> extend = new ArrayList<>(videos);
+        extend.add(newVideo);
+        this.videos = List.copyOf(extend);
+        return newVideo;
     }
 }
