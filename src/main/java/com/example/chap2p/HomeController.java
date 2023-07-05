@@ -8,16 +8,16 @@ import java.util.List;
 
 @Controller
 public class HomeController {
-    record Video(String name){}
 
-    List<Video> videos = List.of(
-            new Video("Need help with spring boot 3 app?"),
-            new Video("Dont't do this to your own code"),
-            new Video("Secrets to fix broken code!"));
+    private final VideoService vs;
+    public HomeController(VideoService vs){
+        this.vs= vs;
+    }
+
 
     @GetMapping("/")
     public String index(Model model) {
-        model.addAttribute("videos", videos);
+        model.addAttribute("videos", vs.getVideos());
         return "index";
     }
 }
