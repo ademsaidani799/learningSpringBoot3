@@ -31,5 +31,10 @@ public class HomeController {
         return "redirect:/";
     }
 
+    @GetMapping("/react")
+    public String react(){
+        return "react";
+    }
+
 
 }
