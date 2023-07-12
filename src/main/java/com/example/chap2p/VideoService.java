@@ -1,5 +1,7 @@
 package com.example.chap2p;
 
+import org.springframework.data.domain.Example;
+import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
@@ -48,5 +50,18 @@ public class VideoService {
         return Collections.emptyList();
 
 
+    }
+
+    public List<VideoEntity> search(UniversalSearch search) {
+        VideoEntity probe = new VideoEntity();
+        if (StringUtils.hasText(search.value())) {
+            probe.setName(search.value());
+            probe.setDescription(search.value());
+        }
+        Example<VideoEntity> example = Example.of(probe, //
+                ExampleMatcher.matchingAny() //
+                        .withIgnoreCase() //
+                        .withStringMatcher(ExampleMatcher.StringMatcher.CONTAINING));
+        return repository.findAll(example);
     }
 }

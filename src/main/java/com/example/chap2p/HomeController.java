@@ -46,4 +46,13 @@ public class HomeController {
         model.addAttribute("videos", searchResults);
         return "index";
 
-    }}
+    }
+    @PostMapping("/universal-search")
+    public String universalSearch(
+            @ModelAttribute UniversalSearch search, Model model) {
+        List<VideoEntity> searchResults =
+                vs.search(search);
+        model.addAttribute("videos", searchResults);
+        return "index";
+    }
+}
