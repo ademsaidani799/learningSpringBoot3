@@ -1,3 +1,5 @@
+package com.example.chap2p;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
