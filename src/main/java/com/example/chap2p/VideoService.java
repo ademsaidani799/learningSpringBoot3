@@ -37,8 +37,8 @@ public class VideoService {
                             videoSearch.name(), videoSearch.description());
         }
         if (StringUtils.hasText(videoSearch.name())) {
-            return repository.findByNameContainsIgnoreCase
-                    (videoSearch.name());
+            return repository.findByNameContainsIgnoreCase(
+                    videoSearch.name());
         }
         if (StringUtils.hasText(videoSearch.description())) {
             return repository.findByDescriptionContainsIgnoreCase
