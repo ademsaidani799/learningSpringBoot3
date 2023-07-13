@@ -1,5 +1,6 @@
 package com.example.chap2p;
 
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.core.userdetails.User;
@@ -26,5 +27,14 @@ public class SecurityConfig {
                         .roles("ADMIN")
                         .build());
         return userDetailsManager;
+    }
+
+    @Bean
+    CommandLineRunner initUsers(UserManagementRepository
+                                        repository) {
+        return args -> {
+            repository.save(new UserAccount("user", "password","ROLE_USER"));
+            repository.save(new UserAccount("admin", "password",                    "ROLE_ADMIN"));
+        };
     }
 }
