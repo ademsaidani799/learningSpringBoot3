@@ -19,4 +19,6 @@ public interface VideoRepository extends JpaRepository
 
     @Query("select v from VideoEntity v where v.name = ?1")
     List<VideoEntity> findCustomerReport(String name);
+
+
 }
